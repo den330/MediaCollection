@@ -9,28 +9,35 @@ services:
   backend:
     build: ./backend
     ports:
-      - '80:80'
+      - '4000:4000'
     command: ["npm", "start"]
     volumes:
       - logs:/app/logs
-      - ./Backend:/app
+      - ./backend:/app
       - /app/node_modules
     env_file:
       - ./env/node.env
     depends_on:
         - mongodb
   frontend:
-    build: ./FrontEnd
+    build: ./frontEnd
     ports:
-      - "80:80"
+      - "5173:5173"
     command: ["npm", "run", "dev"]
     volumes:
-      - ./FrontEnd:/app
+      - ./frontEnd:/app
       - /app/node_modules
     env_file:
       - ./env/react.env
     depends_on:
       - backend
+  npm:
+    image: node
+    working_dir: /app
+    entrypoint: ['npm']
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
 
 volumes:
   data:
