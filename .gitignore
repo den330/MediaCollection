@@ -1,0 +1,40 @@
+# === Node.js dependencies ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# === Vite/React build outputs ===
+dist/
+build/
+
+# === Local Environment Variables ===
+.env
+.env.local
+.env.*.local
+
+# === macOS specific files ===
+.DS_Store
+
+# === Logs ===
+logs
+*.log
+
+# === Docker-specific ===
+*.tar
+*.tar.gz
+
+# === Editor-specific ===
+.vscode
+.idea
+*.swp
+
+# === OS-specific thumbnails/cache ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
