@@ -1,0 +1,12 @@
+# Node modules (re-installed during Docker build)
+node_modules
+dist
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+Dockerfile
+
