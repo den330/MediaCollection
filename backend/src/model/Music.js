@@ -55,10 +55,10 @@ musicSchema.statics.insertMusic = async function (title, ISRC, artist, album, ge
     }
 };
 
-musicSchema.statics.getMusic = async function (ISRC) {
+musicSchema.statics.getMusic = async function (ISRC, session) {
     try {
         const normalizedISRC = ISRC.trim().toUpperCase();
-        const music = await this.findOne({ ISRC: normalizedISRC });
+        const music = await this.findOne({ ISRC: normalizedISRC }).session(session);
         if (!music) {
             return null;
         }

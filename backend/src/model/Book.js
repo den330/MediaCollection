@@ -39,10 +39,10 @@ bookSchema.statics.insertBook = async function (title, ISBN, author, options = {
     }
 };
 
-bookSchema.statics.getBook = async function (ISBN) {
+bookSchema.statics.getBook = async function (ISBN, session) {
     try {
         const normalizedISBN = ISBN.trim().toUpperCase();
-        const book = await this.findOne({ ISBN: normalizedISBN });
+        const book = await this.findOne({ ISBN: normalizedISBN }).session(session);
         if (!book) {
             return null;
         }
