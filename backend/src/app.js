@@ -28,8 +28,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Hello2 World!");
+const loginRoute = require("./route/loginRoute");
+const signupRoute = require("./route/signupRoute");
+const userRoute = require("./route/userRoute");
+const jwtVerify = require("./middleware/jwtverify");
+
+app.use("/login", loginRoute);
+app.use("/signup", signupRoute);
+app.use(jwtVerify);
+app.use("/user", userRoute);
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
 });
 
 db.once("open", () => {
